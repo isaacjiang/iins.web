@@ -1,0 +1,20 @@
+<ion-card>
+  <ion-card-header>
+    TODO
+  </ion-card-header>
+
+
+  <ion-list >
+    <button  ion-item *ngFor="let menuItem of mainMenuWorkflow" (click)="menuClick(menuItem)">
+      {{ menuItem.taskName }}
+    </button>
+
+  </ion-list>
+</ion-card>
+
+
+
+
+
+
+

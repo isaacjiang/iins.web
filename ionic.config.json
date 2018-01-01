@@ -1,6 +1,6 @@
 {
   "name": "iins.web",
-  "app_id": "",
+  "app_id": "iinsweb",
   "type": "ionic-angular",
   "integrations": {
     "cordova": {}

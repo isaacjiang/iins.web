@@ -1,0 +1,20 @@
+
+  <ion-toolbar color ='secondary'>
+    <ion-title >{{ menuTitle }}</ion-title>
+  </ion-toolbar>
+
+  <ion-list >
+    <button  ion-item *ngFor="let menuItem of mainMenuWorkflow" (click)="menuClick(menuItem)">
+      <ion-icon name="star"></ion-icon>
+    <span >{{ menuItem.itemName }}</span>
+    </button>
+
+  </ion-list>
+
+
+
+
+
+
+
+

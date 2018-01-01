@@ -1,19 +1,22 @@
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { Camera } from '@ionic-native/camera';
-import { SplashScreen } from '@ionic-native/splash-screen';
-import { StatusBar } from '@ionic-native/status-bar';
 import { IonicStorageModule, Storage } from '@ionic/storage';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
-import { Items } from '../mocks/providers/items';
-import { Settings } from '../providers/providers';
-import { User } from '../providers/providers';
-import { Api } from '../providers/providers';
-import { MyApp } from './app.component';
+import { IInsWebApp } from './app.component';
+
+import { Items } from '../data/items';
+import { Settings } from '../services/settings.service';
+import { User } from '../services/user.service';
+import { Api } from '../services/api.service';
+
+import {HeaderComponent} from "../components/header/header";
+import {Root} from "../views/root/root";
+import {MenuComponent} from "../components/menu/menu";
+import {MenuDirective} from "../directives/menu.directive";
 
 // The translate loader needs to know where to load i18n files
 // in Ionic's static asset pipeline.
@@ -38,7 +41,10 @@ export function provideSettings(storage: Storage) {
 
 @NgModule({
   declarations: [
-    MyApp
+    Root,
+    MenuDirective,
+    HeaderComponent,MenuComponent,
+    IInsWebApp
   ],
   imports: [
     BrowserModule,
@@ -50,20 +56,19 @@ export function provideSettings(storage: Storage) {
         deps: [HttpClient]
       }
     }),
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(IInsWebApp),
     IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp
+    IInsWebApp,
+    Root,
+    MenuComponent
   ],
   providers: [
     Api,
     Items,
     User,
-    Camera,
-    SplashScreen,
-    StatusBar,
     { provide: Settings, useFactory: provideSettings, deps: [Storage] },
     // Keep this to enable Ionic's runtime error handling during development
     { provide: ErrorHandler, useClass: IonicErrorHandler }
