@@ -6,6 +6,9 @@ import {MenuController, LoadingController, App, Events, IonicPage} from 'ionic-a
 import 'rxjs';
 import {MenuDirective} from "../../directives/menu.directive";
 import {MenuComponent} from "../../components/menu/menu";
+import {ContentDirective} from "../../directives/content.directive";
+import {QuoteComponent} from "../../components/quote/quote";
+import {CustomerlistComponent} from "../../components/customer/customerlist";
 
 
 @Component({
@@ -14,6 +17,8 @@ import {MenuComponent} from "../../components/menu/menu";
 export class Root {
     //public uploader: FileUploader = new FileUploader({url: '/rest/files/upload'});
     @ViewChild(MenuDirective) menuHost: MenuDirective;
+   @ViewChild(ContentDirective) contentHost: ContentDirective;
+
     constructor(
                 public events: Events,
                 public menuCtrl: MenuController,
@@ -33,6 +38,13 @@ export class Root {
       root.events.subscribe('menu-click-item', (param) => {
             console.log(param)
             this.menuCtrl.close()
+        switch (param.itemKey){
+          case "quote":
+            this.loadComponent(this.contentHost.viewContainerRef,QuoteComponent,param)
+          case "customer_list":
+            this.loadComponent(this.contentHost.viewContainerRef,CustomerlistComponent,param)
+        }
+
         })
     }
 
@@ -53,11 +65,21 @@ export class Root {
         this.menuCtrl.toggle()
     }
 
-   loadComponent(viewContainerRef, component,id) {
+   loadComponent(viewContainerRef,component,id) {
     viewContainerRef.clear();
     let componentFactory = this.componentFactoryResolver.resolveComponentFactory(component);
     let ref = viewContainerRef.createComponent(componentFactory);
-    ref.instance.setMenu(id)
+
+    switch (ref.componentType){
+      case MenuComponent:{
+        ref.instance.setMenu(id)
+      }
+      case QuoteComponent:{
+
+      }
+    }
+
+
   }
 
 }

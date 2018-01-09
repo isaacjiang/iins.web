@@ -13,10 +13,13 @@ import { Settings } from '../services/settings.service';
 import { User } from '../services/user.service';
 import { Api } from '../services/api.service';
 
-import {HeaderComponent} from "../components/header/header";
 import {Root} from "../views/root/root";
-import {MenuComponent} from "../components/menu/menu";
 import {MenuDirective} from "../directives/menu.directive";
+import {ContentDirective} from "../directives/content.directive";
+import {HeaderComponent} from "../components/header/header";
+import {MenuComponent} from "../components/menu/menu";
+import {QuoteComponent} from "../components/quote/quote";
+import {CustomerlistComponent} from "../components/customer/customerlist";
 
 // The translate loader needs to know where to load i18n files
 // in Ionic's static asset pipeline.
@@ -42,8 +45,8 @@ export function provideSettings(storage: Storage) {
 @NgModule({
   declarations: [
     Root,
-    MenuDirective,
-    HeaderComponent,MenuComponent,
+    MenuDirective,ContentDirective,
+    HeaderComponent,MenuComponent,QuoteComponent,CustomerlistComponent,
     IInsWebApp
   ],
   imports: [
@@ -63,7 +66,7 @@ export function provideSettings(storage: Storage) {
   entryComponents: [
     IInsWebApp,
     Root,
-    MenuComponent
+    MenuComponent,QuoteComponent,CustomerlistComponent,
   ],
   providers: [
     Api,

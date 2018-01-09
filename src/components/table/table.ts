@@ -2,9 +2,9 @@
  * Created by isaacjiang on 2017-07-17.
  */
 import {Component,Input} from '@angular/core';
-import {Http, URLSearchParams} from '@angular/http'
 import {Events} from 'ionic-angular';
 import 'rxjs';
+import {HttpClient} from "@angular/common/http";
 
 
 @Component({
@@ -19,7 +19,7 @@ export class TableComponent {
     public formTitle:any;
     @Input() form_id:any;
 
-    constructor(public http: Http,
+    constructor(public http: HttpClient,
                 public events: Events) {
        this.eventsHandles(this)
        // setTimeout(()=>{
