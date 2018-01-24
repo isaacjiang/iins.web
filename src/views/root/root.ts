@@ -39,10 +39,12 @@ export class Root {
             console.log(param)
             this.menuCtrl.close()
         switch (param.itemKey){
-          case "quote":
-            this.loadComponent(this.contentHost.viewContainerRef,QuoteComponent,param)
+          case "travel_insurance_quote":
+            this.loadComponent(this.contentHost.viewContainerRef,QuoteComponent,param);
+            break;
           case "customer_list":
             this.loadComponent(this.contentHost.viewContainerRef,CustomerlistComponent,param)
+            break;
         }
 
         })
