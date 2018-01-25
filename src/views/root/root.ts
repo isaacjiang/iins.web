@@ -7,7 +7,7 @@ import 'rxjs';
 import {MenuDirective} from "../../directives/menu.directive";
 import {MenuComponent} from "../../components/menu/menu";
 import {ContentDirective} from "../../directives/content.directive";
-import {QuoteComponent} from "../../components/quote/quote";
+import {QuoteListComponent} from "../../components/quote/quote.list";
 import {CustomerlistComponent} from "../../components/customer/customerlist";
 
 
@@ -40,7 +40,7 @@ export class Root {
             this.menuCtrl.close()
         switch (param.itemKey){
           case "travel_insurance_quote":
-            this.loadComponent(this.contentHost.viewContainerRef,QuoteComponent,param);
+            this.loadComponent(this.contentHost.viewContainerRef,QuoteListComponent,param);
             break;
           case "customer_list":
             this.loadComponent(this.contentHost.viewContainerRef,CustomerlistComponent,param)
@@ -76,7 +76,7 @@ export class Root {
       case MenuComponent:{
         ref.instance.setMenu(id)
       }
-      case QuoteComponent:{
+      case QuoteListComponent:{
 
       }
     }

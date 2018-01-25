@@ -18,8 +18,9 @@ import {MenuDirective} from "../directives/menu.directive";
 import {ContentDirective} from "../directives/content.directive";
 import {HeaderComponent} from "../components/header/header";
 import {MenuComponent} from "../components/menu/menu";
-import {QuoteComponent} from "../components/quote/quote";
+import {QuoteListComponent} from "../components/quote/quote.list";
 import {CustomerlistComponent} from "../components/customer/customerlist";
+import {QuoteInputComponent} from "../components/quote/quote.input";
 
 // The translate loader needs to know where to load i18n files
 // in Ionic's static asset pipeline.
@@ -46,7 +47,7 @@ export function provideSettings(storage: Storage) {
   declarations: [
     Root,
     MenuDirective,ContentDirective,
-    HeaderComponent,MenuComponent,QuoteComponent,CustomerlistComponent,
+    HeaderComponent,MenuComponent,QuoteListComponent,QuoteInputComponent,CustomerlistComponent,
     IInsWebApp
   ],
   imports: [
@@ -66,7 +67,7 @@ export function provideSettings(storage: Storage) {
   entryComponents: [
     IInsWebApp,
     Root,
-    MenuComponent,QuoteComponent,CustomerlistComponent,
+    MenuComponent,QuoteListComponent,QuoteInputComponent,CustomerlistComponent,
   ],
   providers: [
     Api,
