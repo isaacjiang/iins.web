@@ -4,9 +4,12 @@
   </ion-card-header>
 
   <ion-row class="trow"  nowrap *ngFor="let line of formData;let indexRow = index" (click)="selectLine(indexRow-1)">
-    <ion-col class="tcol" text-center *ngFor="let cell of line;let indexCol= index" (click)="selectCell(indexRow-1,indexCol)">
+    <ion-col class="tcol" text-center *ngIf="indexRow>0" col-2>
+      <!--<ion-checkbox [(ngModel)]="pepperoni"></ion-checkbox>-->
+      <span> {{ indexRow }}</span>
+    </ion-col>
+    <ion-col col-2 class="tcol" text-center *ngFor="let cell of line;let indexCol= index" (click)="selectCell(indexRow-1,indexCol)">
       <span>{{ cell  }}</span>
-      <ion-icon name="checkmark-circle" color="active" *ngIf="indexRow>0 && cell==2"></ion-icon>
     </ion-col>
   </ion-row>
 </ion-card>

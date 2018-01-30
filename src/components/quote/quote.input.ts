@@ -29,12 +29,25 @@ export class QuoteInputComponent {
 
 
 
-  selectLine(event){
-
+  next(current){
+console.log(current)
+    switch (current){
+      case "travel_insurance_quote":
+        this.tab = "coverage"
+        break
+      case "coverage":
+        this.tab = "payment"
+        break
+      default:
+        this.tab = "travel_insurance_quote"
+        break
+    }
   }
 
-  selectCell(row,col){
+  submit(quote){
+    console.log(quote)
 
+    this.dismiss()
   }
   dismiss(){
     this.viewCtrl.dismiss('close');

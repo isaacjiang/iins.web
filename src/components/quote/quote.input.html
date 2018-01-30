@@ -4,14 +4,14 @@
 <ion-row >
   <ion-col col-6>
     <ion-segment [(ngModel)]="tab" item-start>
-      <ion-segment-button  value="travel_insurance_quote" checked>
+      <ion-segment-button  value="travel_insurance_quote" checked  style="font-size: 16px;">
         Quote
 
       </ion-segment-button>
-      <ion-segment-button value="coverage">
+      <ion-segment-button value="coverage"  style="font-size: 16px;">
       Policy
       </ion-segment-button>
-      <ion-segment-button value="payment">
+      <ion-segment-button value="payment"  style="font-size: 16px;">
      Payment
       </ion-segment-button>
     </ion-segment>
@@ -21,7 +21,7 @@
 <ion-col></ion-col>
 
   <ion-buttons icon-right>
-    <button style="margin-right:10px;width: 66px;height: 66px;color: #202020;text-align: center;background: inherit;font-size: 20px;"
+    <button color= "dark" style="margin-right:10px;width: 66px;height: 66px;text-align: center;background: inherit;font-size: 20px;"
             (click)="dismiss()">
       <ion-icon name="close" color="primary"></ion-icon>
     </button>
@@ -33,68 +33,51 @@
 </ion-header>
   <ion-content>
 <div style="margin-right: 10px; margin-top: 70px;">
-  <ion-row>
-    <ion-col>
-      <ion-item>
-        <ion-label floating>General Name</ion-label>
-        <ion-input type="text"
-                   [disabled]="true"></ion-input>
-      </ion-item>
-    </ion-col>
-    <ion-col>
-      <ion-item>
-        <ion-label floating>Manufacturer</ion-label>
-        <ion-input type="text"
 
-                   [disabled]="true"></ion-input>
-      </ion-item>
-    </ion-col>
-    <ion-col>
-      <ion-item>
-        <ion-label floating>Ports Count</ion-label>
-        <ion-input type="text"
+    <ion-row [ngSwitch]="tab" style="margin-top: 20px">
+    <ion-col *ngSwitchCase="'travel_insurance_quote'">
+    <ion-item item-left>
+    <ion-label >Type of Travel:</ion-label>
+    <!--<ion-input type="text" [value]="quote.typeOfTravel"></ion-input> -->
+    <ion-select [(ngModel)]="quote.typeOfTravel" interface="popover" >
+    <ion-option value="Single Trip">Single Trip</ion-option>
+    <ion-option value="Multiple Trip">Multiple Trip</ion-option>
+    </ion-select>
 
-                   [disabled]="true"></ion-input>
-      </ion-item>
+    </ion-item>
+    <ion-item>
+    <ion-label >Destination:</ion-label>
+    <ion-input type="text" [value]="quote.destination"></ion-input>
+    </ion-item>
+
+    <ion-item>
+    <ion-label >Departure Date:</ion-label>
+    <ion-input type="text" [value]="quote.dateOfDeparture"></ion-input>
+    </ion-item>
+    <ion-item>
+    <ion-label >Return Date:</ion-label>
+    <ion-input type="text" [value]="quote.dateOfReturn"></ion-input>
+    </ion-item>
+
+    <ion-item>
+    <ion-label >Coverage For:</ion-label>
+    <ion-input type="text" [value]="quote.coverageFor"></ion-input>
+    </ion-item>
     </ion-col>
   </ion-row>
-  <ion-row >
-    <ion-col>
-      <ion-item>
-        <ion-label floating>SNMP Port</ion-label>
-        <ion-input type="text"
 
-                   [disabled]="true"></ion-input>
-      </ion-item>
-    </ion-col>
-    <ion-col>
-      <ion-item>
-        <ion-label floating>Server Port</ion-label>
-        <ion-input type="text"
-
-                   [disabled]="true"></ion-input>
-      </ion-item>
-    </ion-col>
-  </ion-row>
-  <ion-row>
-    <ion-col>
-      <ion-item>
-        <ion-label floating>MTBF Score (Hours)</ion-label>
-        <ion-input type="text"></ion-input>
-      </ion-item>
-    </ion-col>
-  </ion-row>
   <!--<ion-row class="nextbackbutton">-->
   <!--</ion-row>-->
 </div>
 </ion-content>
-<ion-footer style="height: 55px;">
-  <ion-row ion-fixed>
-    <ion-col text-right>
-      <button ion-button color="dark"> NEXT</button>
-      <button ion-button color="dark" > SUBMIT</button>
-    </ion-col>
-  </ion-row>
+<ion-footer>
+<ion-buttons text-right>
+  <button ion-button color="dark" style="width: 80px" (click)="next(tab)"> NEXT</button>
+  <button ion-button color="dark" style="margin-right: 40px;width: 80px" (click)="submit(quote)"> SUBMIT</button>
+</ion-buttons>
+
+
+
 </ion-footer>
 
 

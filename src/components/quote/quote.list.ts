@@ -72,7 +72,7 @@ export class QuoteListComponent {
 
       this.formTitle = "Travel Insurance Quote List"
       // titleList = ['insurer','policyHolder','policyNumber','effectiveDate','expireDate','numberOfDays']
-      this.formData[0] = ['Trip Type', 'Destination','Date of Departure','Date of Return','Coverage For'];
+      this.formData[0] = ["No.",'Trip Type', 'Destination','Date of Departure','Date of Return','Coverage For'];
       for(let line of originalData){
         console.log(line)
         let valueList = []
