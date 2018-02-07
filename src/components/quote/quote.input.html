@@ -40,28 +40,38 @@
     <ion-label >Type of Travel:</ion-label>
     <!--<ion-input type="text" [value]="quote.typeOfTravel"></ion-input> -->
     <ion-select [(ngModel)]="quote.typeOfTravel" interface="popover" >
-    <ion-option value="Single Trip">Single Trip</ion-option>
-    <ion-option value="Multiple Trip">Multiple Trip</ion-option>
+    <ion-option value="SingleTrip">Single Trip</ion-option>
+    <ion-option value="MultipleTrip">Multiple Trip</ion-option>
     </ion-select>
 
     </ion-item>
     <ion-item>
     <ion-label >Destination:</ion-label>
-    <ion-input type="text" [value]="quote.destination"></ion-input>
+    <!--<ion-input type="text" [value]="quote.destination"></ion-input>-->
+      <ion-select [(ngModel)]="quote.destination" interface="popover" >
+        <ion-option value="USA">USA</ion-option>
+        <ion-option value="Canada">Canada</ion-option>
+      </ion-select>
     </ion-item>
 
     <ion-item>
     <ion-label >Departure Date:</ion-label>
-    <ion-input type="text" [value]="quote.dateOfDeparture"></ion-input>
+    <!--<ion-input type="text" [value]="quote.dateOfDeparture"></ion-input>-->
+      <ion-datetime displayFormat="MMM DD, YYYY" pickerFormat="MMM DD, YYYY" min="2018"  max="2020" [(ngModel)]="quote.dateOfDeparture"></ion-datetime>
     </ion-item>
     <ion-item>
     <ion-label >Return Date:</ion-label>
-    <ion-input type="text" [value]="quote.dateOfReturn"></ion-input>
+    <!--<ion-input type="text" [value]="quote.dateOfReturn"></ion-input>-->
+      <ion-datetime displayFormat="MMM DD, YYYY" pickerFormat="MMM DD, YYYY" [min]="quote.dateOfDeparture"  max="2020" [(ngModel)]="quote.dateOfReturn"></ion-datetime>
     </ion-item>
 
     <ion-item>
     <ion-label >Coverage For:</ion-label>
-    <ion-input type="text" [value]="quote.coverageFor"></ion-input>
+    <!--<ion-input type="text" [value]="quote.coverageFor"></ion-input>-->
+      <ion-select [(ngModel)]="quote.coverageFor" interface="popover" >
+        <ion-option value="self">Self</ion-option>
+        <ion-option value="family">Family</ion-option>
+      </ion-select>
     </ion-item>
     </ion-col>
   </ion-row>

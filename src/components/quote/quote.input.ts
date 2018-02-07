@@ -45,7 +45,8 @@ console.log(current)
   }
 
   submit(quote){
-    console.log(quote)
+
+    this.events.publish("submit-travel-insurance-quote",quote)
 
     this.dismiss()
   }

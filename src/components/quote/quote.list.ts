@@ -34,9 +34,13 @@ export class QuoteListComponent {
   }
 
   eventsHandles(root) {
-    root.events.unsubscribe('policyList')
-    root.events.subscribe('policyList', (originalData) => {
-      console.log(originalData)
+    root.events.unsubscribe('submit-travel-insurance-quote')
+    root.events.subscribe('submit-travel-insurance-quote', (quote) => {
+      console.log(quote)
+      this.api.post("/api/quote/trv",quote).subscribe((resp)=>{
+        console.log(resp)
+        this.fillingData(resp)
+      })
 
 
     })
@@ -50,16 +54,6 @@ export class QuoteListComponent {
       this.fillingData(resp)
     })
 
-    // this.originalData =[
-    //   {id:10000021,customerName:'Michael Lin',policyNo:"3502301201303",expireDate:'2017-06-09',notified:"Yes"},
-    //   {id:10000022,customerName:'DDDDD Ln',policyNo:"3502301201303",expireDate:'2017-06-09',notified:"Yes"},
-    //   {id:10000023,customerName:'QUR Lin',policyNo:"3502301201303",expireDate:'2017-06-09',notified:"No"},
-    //   {id:10000041,customerName:'HA Lin',policyNo:"3502301201303",expireDate:'2017-06-09',notified:"Yes"},
-    //   {id:10000066,customerName:'MIN Lin',policyNo:"3502301201303",expireDate:'2017-06-09',notified:"Yes"},
-    //   {id:10000025,customerName:'Micha2l Lin',policyNo:"3502301201303",expireDate:'2017-06-10',notified:"Yes"},
-    //   {id:10000028,customerName:'Michae4 Lin',policyNo:"3502301201304",expireDate:'2017-06-19',notified:"No"},
-    //   {id:10000029,customerName:'Michae6 Lin',policyNo:"3502301201306",expireDate:'2017-06-29',notified:"Yes"}
-    // ]
   }
 
   fillingData(originalData) {
