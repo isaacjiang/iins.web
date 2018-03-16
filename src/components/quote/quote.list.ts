@@ -25,12 +25,9 @@ export class QuoteListComponent {
               public events: Events)
   {
     this.eventsHandles(this)
-    setTimeout(()=>{
 
       this.initialiaze()
 
-     // console.log(this.formData)
-    },10)
   }
 
   eventsHandles(root) {

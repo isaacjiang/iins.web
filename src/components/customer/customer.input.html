@@ -1,0 +1,239 @@
+<ion-header no-border style="background-color: #202020">
+
+
+<ion-row >
+  <ion-col col-6>
+    <ion-segment [(ngModel)]="tab" item-start>
+      <ion-segment-button  value="profile" checked  style="font-size: 16px;">
+       Profile
+      </ion-segment-button>
+      <ion-segment-button value="contact"  style="font-size: 16px;">
+      Address & Contact
+      </ion-segment-button>
+      <ion-segment-button value="documents"  style="font-size: 16px;">
+      Documents
+      </ion-segment-button>
+    </ion-segment>
+
+  </ion-col>
+
+<ion-col></ion-col>
+
+  <ion-buttons icon-right>
+    <button color= "dark" style="margin-right:10px;width: 66px;height: 66px;text-align: center;background: inherit;font-size: 20px;"
+            (click)="dismiss()">
+      <ion-icon name="close" color="primary"></ion-icon>
+    </button>
+  </ion-buttons>
+</ion-row>
+
+
+
+</ion-header>
+  <ion-content>
+<div style="margin-right: 10px; margin-top: 70px;">
+
+    <ion-row [ngSwitch]="tab" style="margin-top: 20px">
+    <ion-col *ngSwitchCase="'profile'">
+    <ion-item item-left>
+    <ion-label >First Name:</ion-label>
+    <ion-input type="text" [(ngModel)]="customer.firstname"></ion-input>
+    <!--<ion-select [(ngModel)]="customer.firstname" interface="popover" >-->
+    <!--<ion-option value="SingleTrip">Single Trip</ion-option>-->
+    <!--<ion-option value="MultipleTrip">Multiple Trip</ion-option>-->
+    <!--</ion-select>-->
+
+    </ion-item>
+    <ion-item>
+    <ion-label >Last Name:</ion-label>
+    <ion-input type="text" [(ngModel)]="customer.lastname"></ion-input>
+      <!--<ion-select [(ngModel)]="customer.lastname" interface="popover" >-->
+        <!--<ion-option value="USA">USA</ion-option>-->
+        <!--<ion-option value="Canada">Canada</ion-option>-->
+      <!--</ion-select>-->
+    </ion-item>
+
+    <ion-item>
+    <ion-label >Departure Date:</ion-label>
+    <!--<ion-input type="text" [value]="quote.dateOfDeparture"></ion-input>-->
+      <ion-datetime displayFormat="MMM DD, YYYY" pickerFormat="MMM DD, YYYY" min="2018"  max="2020" [(ngModel)]="customer.date_of_Birth"></ion-datetime>
+    </ion-item>
+
+
+    <ion-item>
+    <ion-label >Coverage For:</ion-label>
+    <!--<ion-input type="text" [value]="quote.coverageFor"></ion-input>-->
+      <ion-select [(ngModel)]="customer.gennder" interface="popover" >
+        <ion-option value="M">Male</ion-option>
+        <ion-option value="F">Female</ion-option>
+      </ion-select>
+    </ion-item>
+    </ion-col>
+  </ion-row>
+
+  <!--<ion-row class="nextbackbutton">-->
+  <!--</ion-row>-->
+</div>
+</ion-content>
+<ion-footer>
+<ion-buttons text-right>
+  <button ion-button color="dark" style="width: 80px" (click)="next(tab)"> NEXT</button>
+  <button ion-button color="dark" style="margin-right: 40px;width: 80px" (click)="submit(customer)"> SUBMIT</button>
+</ion-buttons>
+
+
+
+</ion-footer>
+
+
+<!--<ion-header  style="background-color: #2a2a2a">-->
+<!--<ion-row>-->
+  <!--<ion-col col-10>-->
+    <!--<ion-segment [(ngModel)]="tab" color="danger" item-start>-->
+      <!--<ion-segment-button col-2 value="travel_insurance_quote" checked>-->
+
+        <!--<button ion-button outline item-end icon-left (click)="loadPage('root')" >-->
+          <!--<ion-icon name="ios-globe-outline"></ion-icon>-->
+          <!--Home-->
+        <!--</button>-->
+
+      <!--</ion-segment-button>-->
+      <!--<ion-segment-button col-2 value="coverage">-->
+        <!--<ion-buttons col-1 >-->
+          <!--<button ion-button outline item-end icon-left (click)="loadPage('root')" >-->
+            <!--<ion-icon name="ios-globe-outline"></ion-icon>-->
+            <!--Home-->
+          <!--</button>-->
+        <!--</ion-buttons>-->
+      <!--</ion-segment-button>-->
+      <!--<ion-segment-button col-2 value="payment">-->
+        <!--<ion-buttons col-1 >-->
+          <!--<button ion-button outline item-end icon-left (click)="loadPage('root')" >-->
+            <!--<ion-icon name="ios-globe-outline"></ion-icon>-->
+            <!--Home-->
+          <!--</button>-->
+        <!--</ion-buttons>-->
+      <!--</ion-segment-button>-->
+    <!--</ion-segment>-->
+  <!--</ion-col>-->
+  <!--<ion-buttons col-1 >-->
+  <!--<button ion-button outline item-end icon-left (click)="loadPage('root')" >-->
+    <!--<ion-icon name="ios-globe-outline"></ion-icon>-->
+    <!--Home-->
+  <!--</button>-->
+<!--</ion-buttons>-->
+<!--</ion-row>-->
+
+
+  <!--</ion-header>-->
+  <!--<ion-content>-->
+    <!--<ion-row [ngSwitch]="tab" style="margin-top: 20px">-->
+      <!--<ion-col></ion-col>-->
+      <!--<ion-col col-8 *ngSwitchCase="'travel_insurance_quote'">-->
+        <!--<ion-item item-left>-->
+          <!--<ion-label >Type of Travel:</ion-label>-->
+          <!--&lt;!&ndash;<ion-input type="text" [value]="quote.typeOfTravel"></ion-input> &ndash;&gt;-->
+          <!--<ion-select [(ngModel)]="quote.typeOfTravel" interface="popover" >-->
+            <!--<ion-option value="Single Trip">Single Trip</ion-option>-->
+            <!--<ion-option value="Multiple Trip">Multiple Trip</ion-option>-->
+          <!--</ion-select>-->
+
+        <!--</ion-item>-->
+        <!--<ion-item>-->
+          <!--<ion-label >Destination:</ion-label>-->
+          <!--<ion-input type="text" [value]="quote.destination"></ion-input>-->
+        <!--</ion-item>-->
+
+        <!--<ion-item>-->
+          <!--<ion-label >Departure Date:</ion-label>-->
+          <!--<ion-input type="text" [value]="quote.dateOfDeparture"></ion-input>-->
+        <!--</ion-item>-->
+        <!--<ion-item>-->
+          <!--<ion-label >Return Date:</ion-label>-->
+          <!--<ion-input type="text" [value]="quote.dateOfReturn"></ion-input>-->
+        <!--</ion-item>-->
+
+        <!--<ion-item>-->
+          <!--<ion-label >Coverage For:</ion-label>-->
+          <!--<ion-input type="text" [value]="quote.coverageFor"></ion-input>-->
+        <!--</ion-item>-->
+
+
+
+        <!--&lt;!&ndash;</ion-list>&ndash;&gt;-->
+      <!--</ion-col>-->
+
+      <!--<ion-col *ngSwitchCase="'coverage'">-->
+        <!--&lt;!&ndash;<ion-list >&ndash;&gt;-->
+
+        <!--<ion-item>-->
+          <!--<ion-label >Insurance Type:</ion-label>-->
+          <!--<ion-input type="text" [value]="policyInfo.coverage.planType"></ion-input>-->
+        <!--</ion-item>-->
+        <!--<ion-item-divider></ion-item-divider>-->
+        <!--<ion-row *ngFor="let pb of policyInfo.coverage.planAndBenefits">-->
+          <!--<ion-item>-->
+            <!--<ion-label >Insurance Plan:</ion-label>-->
+            <!--<ion-input type="text" [value]="pb.insurancePlan"></ion-input>-->
+          <!--</ion-item>-->
+
+          <!--<ion-item>-->
+            <!--<ion-label fixed>Sum Insured:</ion-label>-->
+            <!--<ion-input type="text" [value]="pb.sumInsured"></ion-input>-->
+          <!--</ion-item>-->
+          <!--<ion-item>-->
+            <!--<ion-label fixed>Premium:</ion-label>-->
+            <!--<ion-input type="text" [value]="pb.premium"></ion-input>-->
+          <!--</ion-item>-->
+          <!--<ion-item>-->
+            <!--<ion-label fixed>Deductible:</ion-label>-->
+            <!--<ion-input type="text" [value]="pb.deductible"></ion-input>-->
+          <!--</ion-item>-->
+          <!--<ion-item-divider></ion-item-divider>-->
+        <!--</ion-row>-->
+
+        <!--<ion-item>-->
+          <!--<ion-label >Total Premium:</ion-label>-->
+          <!--<ion-input type="text" [value]="policyInfo.coverage.totalPremium"></ion-input>-->
+        <!--</ion-item>-->
+
+        <!--<ion-item>-->
+          <!--<ion-label fixed>Beneficiary:</ion-label>-->
+          <!--<ion-input type="text" [value]="policyInfo.coverage.beneficiary"></ion-input>-->
+        <!--</ion-item>-->
+        <!--<ion-item>-->
+          <!--<ion-label fixed>Relationship:</ion-label>-->
+          <!--<ion-input type="text" [value]="policyInfo.coverage.relationship"></ion-input>-->
+        <!--</ion-item>-->
+
+        <!--&lt;!&ndash;</ion-list>&ndash;&gt;-->
+      <!--</ion-col>-->
+      <!--<ion-col *ngSwitchCase="'payment'">-->
+        <!--&lt;!&ndash;<ion-list >&ndash;&gt;-->
+
+        <!--<ion-item>-->
+          <!--<ion-label >Payment Amount:</ion-label>-->
+          <!--<ion-input type="text" [value]="policyInfo.payment.paymentAmount"></ion-input>-->
+        <!--</ion-item>-->
+
+
+        <!--<ion-item>-->
+          <!--<ion-label>Payment Date:</ion-label>-->
+          <!--<ion-input type="text" [value]="policyInfo.payment.paymentDate"></ion-input>-->
+        <!--</ion-item>-->
+        <!--<ion-item>-->
+          <!--<ion-label >Payment Method:</ion-label>-->
+          <!--<ion-input type="text" [value]="policyInfo.payment.paymentMethod"></ion-input>-->
+        <!--</ion-item>-->
+
+
+
+        <!--&lt;!&ndash;</ion-list>&ndash;&gt;-->
+      <!--</ion-col>-->
+<!--<ion-col></ion-col>-->
+    <!--</ion-row>-->
+  <!--</ion-content>-->
+
+
+
+

@@ -8,7 +8,7 @@ import {MenuDirective} from "../../directives/menu.directive";
 import {MenuComponent} from "../../components/menu/menu";
 import {ContentDirective} from "../../directives/content.directive";
 import {QuoteListComponent} from "../../components/quote/quote.list";
-import {CustomerlistComponent} from "../../components/customer/customerlist";
+import {CustomerListComponent} from "../../components/customer/customer.list";
 
 
 @Component({
@@ -43,7 +43,7 @@ export class Root {
             this.loadComponent(this.contentHost.viewContainerRef,QuoteListComponent,param);
             break;
           case "customer_list":
-            this.loadComponent(this.contentHost.viewContainerRef,CustomerlistComponent,param)
+            this.loadComponent(this.contentHost.viewContainerRef,CustomerListComponent,param)
             break;
         }
 
